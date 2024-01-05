@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function download_image(){
+				var canvas = document.getElementById("potatoCanvas");
+				png = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+				var link = document.createElement('a');
+				link.download = "MrPotatoHead.png";
+				link.href = png;
+				link.click();
+			}
+			window.onload = function() {
+				var c = document.getElementById("potatoCanvas");
+				var ctx = c.getContext("2d");
+				var img = document.getElementById("head");
+				ctx.drawImage(img, 0, 0);
+			};
+			$(document).ready(function(){
+				$(".eyes").click(function(){
+					document.getElementsByClassName("eyes")[0].disabled = true;
+					var c = document.getElementById("potatoCanvas");
+					var ctx = c.getContext("2d");
+					var img = document.getElementById("eyes");
+					ctx.drawImage(img, 140, 30);
+				});
+			});
+			$(document).ready(function(){
+				$(".nose").click(function(){
+					document.getElementsByClassName("nose")[0].disabled = true;
+					var c = document.getElementById("potatoCanvas");
+					var ctx = c.getContext("2d");
+					var img = document.getElementById("nose");
+					ctx.drawImage(img, 140, 100);
+				});
+			});
+			$(document).ready(function(){
+				$(".mouth").click(function(){
+					document.getElementsByClassName("mouth")[0].disabled = true;
+					var c = document.getElementById("potatoCanvas");
+					var ctx = c.getContext("2d");
+					var img = document.getElementById("mouth");
+					ctx.drawImage(img, 140, 200);
+				});
+			});
+			$(document).ready(function(){
+				$(".hat").click(function(){
+					document.getElementsByClassName("hat")[0].disabled = true;
+					var c = document.getElementById("potatoCanvas");
+					var ctx = c.getContext("2d");
+					var img = document.getElementById("hat");
+					ctx.drawImage(img, 145, -70);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			Welcome! Please choose what features you would like Mr. Potato Head to have. <br><br>
+			<button class="eyes" type="button">Eyes</button>
+			<button class="nose" type="button">Nose</button>
+			<button class="mouth" type="button">Mouth</button>
+			<button class="hat" type="button">Hat</button><br><br>
+			<button class="reload" type="submit">Refresh</button><br><br>
+			<button id="download" type="button" onclick="download_image()">Download</button>
+		</form><br>
+		<canvas id="potatoCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+		<div style="display:none">
+			<img id="head" src="potato.png">
+			<img id="eyes" src="eyes.png">
+			<img id="nose" src="nose.png">
+			<img id="mouth" src="mouth.png">
+			<img id="hat" src="hat.png">
+		</div>
+	</body>
+</html>
